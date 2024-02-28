@@ -18,4 +18,4 @@
 -Tree Shaking - remove unused code
 -Diffrent dev and prod bundles
     -to create dev files we removed main from package 
-    <img title="a title" alt="Alt text" src="F:\Coding sUcks\React\Screenshot 2024-02-28 205017.png">
+    <img title="a title" alt="Alt text" src="Screenshot 2024-02-28 205017.png">

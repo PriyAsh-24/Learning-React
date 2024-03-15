@@ -115,7 +115,9 @@
     time stamp: -55 minuter
 - Normal Js Function 
   1. useState() - Superpowerful State Variable in React  (whenever a state variable updates react re renders  the component)
-  2. useEffect() 
+    - when it is called or changed either it is const the whole header or body function render again in a split of second 
+    - this is the reason why we can write const as a state variable even when it is changing
+  2. useEffect() next lecture
 
   ### React Reconciliation (diff algorithm) algorithm
       - it comapres the virtual dom with the new dom created and do the nessary changes 
@@ -132,3 +134,92 @@
       - Here everythiing has its own environment like backend can be on any langauge
       - and further they all can be connected to each other using API calls
         ![Notes](./Notes/Screenshot%202024-03-05%20001011.png)
+
+## Two ways to approach api connection
+  1. Load the website ==> call the Api (which takes approx 1 sec) ==> render The website 
+      - here our website takes about 1 sec to fetch all api and start the website
+  
+  2. load the website ==> render site ==> call Api ==> render again
+      - here we have our website but we are rendering twice which is not at all a headache because react is awesome at rendering ui we already saw that in previous lecture 
+
+## use Effect
+  - in body.js
+
+  - when we were accessing data directly from swiggy website it gives a error it is CORS Policy
+  ![Notes](./Notes/Screenshot%202024-03-05%20184158.png)
+
+
+  [Video Of akshay on cors](https://www.youtube.com/watch?v=tcLW5d0KAYE)
+
+  ### CORS (Cross Origin Resource Sharing)
+    - our web browsers wont allow the sharing of data from one origin to another origin (Origin can be any other domain ,or any sub domain , or other ports ,or diffrent protocols)
+
+  - After cors extension
+  - we connected the swiggy api data with our app using fetch 
+    - Learn optional chaining
+  - we can also use corsproxy from
+  []()
+
+  -we can add a loading in place of our res data and now there is no use of mock data 
+  - or in place of loading we can show ==Summering UI==
+ 
+- Header pe useState ka use aur login logout button banaya 
+
+- Search Button banya usme jo jo dikhat aayi code mai body.js mai fetch class ke andar 
+
+# Lecture 6.1 
+
+- whenever we get data from swiggy it give us limited data 
+- there is a update json in network whenever we scroll 
+- this update is having request method as post and not get so we use fetch post api using the link below 
+  [to fetch a Post Api](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
+
+
+# Lecture 7
+
+## UseEffect and dependecy array
+ - when there is no dependency array => every time header is render it will be called
+ - when there is empty dependency array => it is called on initial render(just once)
+ - when it is filled with a use state variable => it will render everytime useState variable is changed 
+
+## UseState 
+  - initials it inside our  function component i.e.  body or header etc
+  - always keep it in starting of your code
+  - never use it inside a scope for example (if or for loop)
+ 
+## Routing
+- install react router dom using "npm install react-router-dom"
+- it will be in package dependencies
+- now import two data 
+```javascript
+import { createBrowserRouter,RouterProvider } from "react-router-dom"
+// aage ka code mai hai main.js mai
+``` 
+
+- iske baad about aur contact us banya 
+- per agar hum /priyash likhenge toh ek error aa raha hai jisko apan manipulate kar sakte hai
+  !(Error Before)[./Notes/Screenshot%202024-03-07%20011618.png]
+
+- we import a hook useRouteError in our error.js to get the error
+
+- Outlet - using something as a chilren of another tag 
+  - as seen in code
+
+- never use <a> tags in your jsx code because this will reload our page 
+- instead of that you can use link which is a tag provided by react router dom this will not roload the page but only change the component of the page
+- this is reach web apps are called Single Page Application (SPA)
+
+### Two Types of routing
+ - Client side Routing -  
+ - Server Side Routing - it reloads the page because it fetch the data from server
+
+## Creating Menu Page 
+  - Firstly create a menu page 
+  - adding this is path but it is added in diffrent because we need diffrent menu for diffrent restuarants
+    - there is diffrent res menu for other restuarants so we use ":" in main.js
+
+  - Now fetch the data and use it inside our menu
+  - something known as graphql it helps us to get data easily which is inside a object
+  - now similar fectching the data and return it in our ui
+
+- Now to get diffrent Ui for diffrent restuarants we used there id which was taken from useparams from react-routing dom and this param is the resid which was given in main.js >chilren>path>restuarant/:resid
